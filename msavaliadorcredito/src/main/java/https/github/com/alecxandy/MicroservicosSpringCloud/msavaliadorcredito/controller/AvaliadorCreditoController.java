@@ -1,6 +1,9 @@
 package https.github.com.alecxandy.MicroservicosSpringCloud.msavaliadorcredito.controller;
 
 
+import https.github.com.alecxandy.MicroservicosSpringCloud.msavaliadorcredito.Exception.DadosClienteNotFoundException;
+import https.github.com.alecxandy.MicroservicosSpringCloud.msavaliadorcredito.Exception.ErroComunicacaoMicroservicesException;
+import https.github.com.alecxandy.MicroservicosSpringCloud.msavaliadorcredito.Exception.ErroSolicitacaoCartaoException;
 import https.github.com.alecxandy.MicroservicosSpringCloud.msavaliadorcredito.domain.*;
 import https.github.com.alecxandy.MicroservicosSpringCloud.msavaliadorcredito.service.AvaliadorCreditoService;
 import lombok.RequiredArgsConstructor;
