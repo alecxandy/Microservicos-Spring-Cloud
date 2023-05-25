@@ -1,2 +1,3 @@
-package https.github.com.alecxandy.MicroservicosSpringCloud.git.mscartoes.domain;public class ClienteCartao {
+package https.github.com.alecxandy.MicroservicosSpringCloud.git.mscartoes.domain;
+public class ClienteCartao {
 }
