@@ -19,7 +19,7 @@ public class Cartao {
     private Long id;
     private String nome;
     @Enumerated(EnumType.STRING)
-    private https.github.com.alecxandy.MicroservicosSpringCloud.git.mscartoes.enums.BandeiraCartao bandeiraCartao;
+    private BandeiraCartao bandeiraCartao;
     private BigDecimal renda;
     private BigDecimal limiteBasico;
 
