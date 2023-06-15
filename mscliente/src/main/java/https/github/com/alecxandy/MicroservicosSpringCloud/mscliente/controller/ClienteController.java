@@ -21,11 +21,6 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping
-    public String status() {
-        return "ok";
-    }
-
     @PostMapping
     public ResponseEntity save(@RequestBody ClienteDTO clienteDTO) {
         Cliente cliente = new Cliente(clienteDTO.getNome(),clienteDTO.getCpf(),clienteDTO.getIdade());
@@ -38,8 +33,8 @@ public class ClienteController {
         return ResponseEntity.created(headerLocation).build();
     }
 
-    @GetMapping
-    public ResponseEntity dadosClientes(@RequestParam String cpf) {
+    @GetMapping(params = "cpf")
+    public ResponseEntity dadosClientes(@RequestParam(name = "cpf") String cpf) {
         Optional<Cliente> clienteOptional = clienteService.getByCpf(cpf);
         if (clienteOptional.isEmpty()) {
             return ResponseEntity.notFound().build();

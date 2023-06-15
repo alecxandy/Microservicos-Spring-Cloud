@@ -14,20 +14,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("avaliacoes-credito")
 @RequiredArgsConstructor
-public class AvaliadorCreditoController {
+public class  AvaliadorCreditoController {
 
     private final AvaliadorCreditoService avaliadorCreditoService;
-
-    @GetMapping
-    public String status(){
-        return "ok";
-    }
 
     @GetMapping(value = "situacao-cliente", params = "cpf")
     public ResponseEntity consultarSituacaoCliente(@RequestParam("cpf") String cpf){
         try {
-            SituacaoCliente situacaoCliente = avaliadorCreditoService.obterSituacaoCliente(cpf);
-            return ResponseEntity.ok(situacaoCliente);
+            SituacaoClienteDTO situacaoClienteDTO = avaliadorCreditoService.obterSituacaoCliente(cpf);
+            return ResponseEntity.ok(situacaoClienteDTO);
         } catch (DadosClienteNotFoundException e) {
             return ResponseEntity.notFound().build();
         } catch (ErroComunicacaoMicroservicesException e) {
@@ -36,11 +31,11 @@ public class AvaliadorCreditoController {
     }
 
     @PostMapping
-    public ResponseEntity realizarAvaliacao( @RequestBody DadosAvaliacao dados ){
+    public ResponseEntity realizarAvaliacao( @RequestBody DadosAvaliacaoDTO dados ){
         try {
-            RetornoAvaliacaoCliente retornoAvaliacaoCliente = avaliadorCreditoService
+            RetornoAvaliacaoClienteDTO retornoAvaliacaoClienteDTO = avaliadorCreditoService
                     .realizarAvaliacao(dados.getCpf(), dados.getRenda());
-            return ResponseEntity.ok(retornoAvaliacaoCliente);
+            return ResponseEntity.ok(retornoAvaliacaoClienteDTO);
         } catch (DadosClienteNotFoundException e) {
             return ResponseEntity.notFound().build();
         } catch (ErroComunicacaoMicroservicesException e) {
@@ -49,11 +44,11 @@ public class AvaliadorCreditoController {
     }
 
     @PostMapping("solicitacoes-cartao")
-    public ResponseEntity solicitarCartao(@RequestBody DadosSolicitacaoEmissaoCartao dados){
+    public ResponseEntity solicitarCartao(@RequestBody DadosSolicitacaoEmissaoCartaoDTO dados){
         try{
-            ProtocoloSolicitacaoCartao protocoloSolicitacaoCartao = avaliadorCreditoService
+            ProtocoloSolicitacaoCartaoDTO protocoloSolicitacaoCartaoDTO = avaliadorCreditoService
                     .solicitarEmissaoCartao(dados);
-            return ResponseEntity.ok(protocoloSolicitacaoCartao);
+            return ResponseEntity.ok(protocoloSolicitacaoCartaoDTO);
         }catch (ErroSolicitacaoCartaoException e){
             return ResponseEntity.internalServerError().body(e.getMessage());
         }

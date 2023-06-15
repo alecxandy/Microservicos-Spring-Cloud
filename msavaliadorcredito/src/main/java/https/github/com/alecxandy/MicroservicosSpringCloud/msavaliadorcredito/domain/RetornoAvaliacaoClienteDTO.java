@@ -7,6 +7,6 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class RetornoAvaliacaoCliente {
-    private List<CartaoAprovado> cartoes;
+public class RetornoAvaliacaoClienteDTO {
+    private List<CartaoAprovadoDTO> cartoes;
 }

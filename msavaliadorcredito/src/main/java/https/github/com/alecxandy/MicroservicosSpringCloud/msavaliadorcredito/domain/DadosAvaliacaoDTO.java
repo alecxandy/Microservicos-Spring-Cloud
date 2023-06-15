@@ -3,7 +3,7 @@ package https.github.com.alecxandy.MicroservicosSpringCloud.msavaliadorcredito.d
 import lombok.Data;
 
 @Data
-public class DadosAvaliacao {
+public class DadosAvaliacaoDTO {
     private String cpf;
     private Long renda;
 }
